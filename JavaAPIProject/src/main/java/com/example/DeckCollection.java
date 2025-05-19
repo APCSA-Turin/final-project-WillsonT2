@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class DeckCollection {
     private ArrayList<Card> collection;
-    private ArrayList<Card> startingDeck;
+    private final ArrayList<Card> startingDeck;
 
     public DeckCollection(ArrayList<Card> collection, ArrayList<Card> startingDeck){
         this.collection = collection;
