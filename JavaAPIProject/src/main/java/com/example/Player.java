@@ -6,7 +6,7 @@ public class Player {
     private int drawEachTurn = 4;
     private Deck myDeck;
 
-    public Player(Deck myDeck){
+    public Player(Deck myDeck, Character1 chosenCharacter1){
         this.myDeck = myDeck;
     }
 }

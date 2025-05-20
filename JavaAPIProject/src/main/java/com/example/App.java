@@ -16,7 +16,7 @@ public class App implements ActionListener
         f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         JLabel l = new JLabel();
         AttackCard testingCard = new AttackCard("Swipe",1, 4);
-        JButton b=new JButton(testingCard.getName());//creating instance of JButton
+        JButton b=new JButton(testingCard.getName() + "\n " + testingCard.getCost());//creating instance of JButton
         b.setBounds(130,100,100, 40);//x axis, y axis, width, height
         f.add(b);//adding button in JFrame
         f.setSize(1920,1080);//400 width and 500 height
