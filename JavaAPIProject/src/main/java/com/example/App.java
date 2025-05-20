@@ -1,5 +1,6 @@
 package com.example;
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -7,25 +8,37 @@ import java.awt.event.ActionListener;
  * Hello world!
  *
  */
-public class App implements ActionListener
+public class App
 {
 
 
     public static void main(String[] args){
-        JFrame f=new JFrame();//creating instance of JFrame
-        f.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        JLabel l = new JLabel();
-        AttackCard testingCard = new AttackCard("Swipe",1, 4);
-        JButton b=new JButton(testingCard.getName() + "\n " + testingCard.getCost());//creating instance of JButton
-        b.setBounds(130,100,100, 40);//x axis, y axis, width, height
-        f.add(b);//adding button in JFrame
-        f.setSize(1920,1080);//400 width and 500 height
-        f.setLayout(null);//using no layout managers
-        f.setVisible(true);//making the frame visible
-    }
-
-    @Override
-    public void actionPerformed(ActionEvent e) {
-
+        JFrame frame = new JFrame();
+        JPanel contentPane = new JPanel(new CardLayout());
+        JPanel menuScreen = new JPanel();
+        JPanel characterSelectionScreen = new JPanel();
+        JButton switchToCharacter = new JButton("Go to Characters");
+        JButton switchToMenu = new JButton("Go to menu");
+        contentPane.add(menuScreen, "Menu");
+        contentPane.add(characterSelectionScreen, "Select Character");
+        CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+        switchToCharacter.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(contentPane, "Select Character");
+            }
+        });
+        switchToMenu.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                cardLayout.show(contentPane, "Menu");
+            }
+        });
+        characterSelectionScreen.add(switchToMenu);
+        menuScreen.add(switchToCharacter);
+        frame.add(contentPane);
+        frame.setSize(1920, 1080);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        frame.setVisible(true);
     }
 }
