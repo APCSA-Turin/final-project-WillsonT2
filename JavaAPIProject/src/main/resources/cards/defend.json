@@ -1,0 +1,29 @@
+{
+  "id": "defend",
+  "name": "Defend",
+  "description": "Gain 5 block.",
+  "type": "skill",
+  "cost": 1,
+  "rarity": "basic",
+  "target": "self",
+  "tags": [
+    "basic",
+    "defend",
+    "skill"
+  ],
+  "effects": [
+    {
+      "type": "block",
+      "value": 5
+    }
+  ],
+  "upgrade": {
+    "description": "Gain 8 block.",
+    "effects": [
+      {
+        "type": "block",
+        "value": 8
+      }
+    ]
+  }
+}

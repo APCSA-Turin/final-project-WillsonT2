@@ -1,0 +1,29 @@
+{
+  "id": "strike",
+  "name": "Strike",
+  "description": "Deal 6 damage.",
+  "type": "attack",
+  "cost": 1,
+  "rarity": "basic",
+  "target": "enemy",
+  "tags": [
+    "basic",
+    "strike",
+    "attack"
+  ],
+  "effects": [
+    {
+      "type": "damage",
+      "value": 6
+    }
+  ],
+  "upgrade": {
+    "description": "Deal 9 damage.",
+    "effects": [
+      {
+        "type": "damage",
+        "value": 9
+      }
+    ]
+  }
+}
