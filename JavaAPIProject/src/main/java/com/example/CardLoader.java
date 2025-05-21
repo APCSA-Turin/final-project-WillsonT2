@@ -1,16 +1,22 @@
 package com.example;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.core.type.TypeReference;
 
-import java.net.URL;
+import java.io.File;
+import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
 public class CardLoader {
-    private final ObjectMapper mapper = new ObjectMapper();
 
-    public Map<String, CardDefinition> loadAll() throws Exception {
-        Map<String, CardDefiniton> defs = new HashMap<>();
-        URL folder = getClass().getResource("cards");
+    public static Map<String, CardDefinition> loadAll() throws IOException {
+        ObjectMapper mapper = new ObjectMapper();
+        Map<String, CardDefinition> loadedCards = new HashMap<>();
+        File directory = new File("JavaAPIProject/src/main/resources/cards");
+        File[] files = directory.listFiles();
+        for (File file : files){
+            CardDefinition cardDef = mapper.readValue(file, CardDefinition.class);
+            loadedCards.put(cardDef.getId(), cardDef);
+        }
+        return loadedCards;
     }
 }

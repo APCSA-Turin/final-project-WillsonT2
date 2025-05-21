@@ -1,29 +1,28 @@
 package com.example;
 
+import java.util.List;
+
 public class Card {
-    private int cost;
-    private String type;
+    private String id;
     private String name;
+    private String description;
+    private String type;
+    private int cost;
+    private String rarity;
+    private String target;
+    private String image;
+    private List<String> tags;
+    private List<EffectDef> effects;
+    private UpgradeDef upgrade;
+    private boolean isUpgraded = false;
 
-    public Card(String name, int cost, String type){
-        this.cost = cost;
-        this.type = type;
-        this.name = name;
+    public Card(CardDefinition cardDef){
+
     }
 
-    public int getCost(){
-        return cost;
+    public void upgradeCard(){
+        isUpgraded = true;
     }
 
-    public void setCost(int newCost){
-        cost = newCost;
-    }
 
-    public String getType(){
-        return type;
-    }
-
-    public String getName(){
-        return name;
-    }
 }

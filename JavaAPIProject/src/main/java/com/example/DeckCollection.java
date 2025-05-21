@@ -3,15 +3,10 @@ package com.example;
 import java.util.ArrayList;
 
 public class DeckCollection {
-    private ArrayList<Card> collection;
-    private final ArrayList<Card> startingDeck;
+    private ArrayList<CardDefinition> collection;
 
-    public DeckCollection(ArrayList<Card> collection, ArrayList<Card> startingDeck){
-        this.collection = collection;
-        this.startingDeck = startingDeck;
+    public DeckCollection(){
+
     }
 
-    public ArrayList<Card> getStartingDeck(){
-        return startingDeck;
-    }
 }
