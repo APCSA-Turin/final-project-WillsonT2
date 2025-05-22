@@ -1,0 +1,28 @@
+{
+  "id": "weaken",
+  "name": "Weaken",
+  "description": "Weaken one enemy for 2 turns.",
+  "type": "skill",
+  "cost": 1,
+  "rarity": "basic",
+  "target": "enemy",
+  "tags": [
+    "basic",
+    "skill"
+  ],
+  "effects": [
+    {
+      "type": "weaken",
+      "value": 2
+    }
+  ],
+  "upgrade": {
+    "description": "Weaken one enemy for 3 turns",
+    "effects": [
+      {
+        "type": "weaken",
+        "value": 2
+      }
+    ]
+  }
+}
