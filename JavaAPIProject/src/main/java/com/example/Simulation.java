@@ -1,41 +1,43 @@
 package com.example;
 
+import java.io.IOException;
+
 public class Simulation {
-    public static void main(String[] args) throws Exception {
-        // 1) Load your cards
-        CardLoader loader = new CardLoader();
-        loader.loadAll();
-        Card strike = loader.getId("strike");
-        Card defend = loader.getId("defend");
+    public static void main(String[] args) throws IOException {
+            // Load cards
+            CardLoader loader = new CardLoader();
+            loader.loadAll();
 
-        // 2) Create player & enemy
-        Entity player = new Entity("You",   30);
-        Entity enemy  = new Entity("Goblin",20);
+            // Grab your two cards
+            Card strike = loader.getId("strike");
+            Card defend = loader.getId("defend");
 
-        // 3) Simulate a couple of turns
-        System.out.println("\n--- Turn 1: You attack ---");
-        strike.play(player, enemy);
-        if (!enemy.isAlive()) {
-            System.out.println("Enemy defeated!");
-            return;
-        }
+            // Create entities
+            Entity player = new Entity("Player", 50);
+            Entity goblin = new Entity("Goblin", 30);
 
-        System.out.println("\n--- Turn 1: Enemy attacks you for 5 damage ---");
-        player.takeDamage(5);
-        if (!player.isAlive()) {
-            System.out.println("You died!");
-            return;
-        }
+            // Starting stats
+            System.out.println("=== Simulation Start ===");
+            System.out.println(player.getName() + " → HP: " + player.getHp() + ", BLOCK: " + player.getBlock());
+            System.out.println(goblin.getName() + " → HP: " + goblin.getHp() + ", BLOCK: " + goblin.getBlock());
 
-        System.out.println("\n--- Turn 2: You defend ---");
-        defend.play(player, player);
+            // 1) Strike: self = player, target = goblin
+            System.out.println("\nPlayer plays: " + strike.getName());
+            strike.play(player, goblin);
+            System.out.println("After Strike → " +
+                    goblin.getName() + " HP: " + goblin.getHp() + ", BLOCK: " + goblin.getBlock());
 
-        // 4) End‐of‐turn status updates
-        player.endTurn();
-        enemy.endTurn();
+            // 2) Defend: self = player, target = player (you’re blocking yourself)
+            System.out.println("\nPlayer plays: " + defend.getName());
+            defend.play(player, player);
+            System.out.println("After Defend → " +
+                    player.getName() + " HP: " + player.getHp() + ", BLOCK: " + player.getBlock());
 
-        System.out.printf("%nFinal State → You: HP=%d, BLOCK=%d; Enemy: HP=%d, BLOCK=%d%n",
-                player.getHp(), player.getBlock(),
-                enemy.getHp(),  enemy.getBlock());
+            // Final stats
+            System.out.println("\n=== Final State ===");
+            System.out.println(player.getName() + " → HP: " + player.getHp() + ", BLOCK: " + player.getBlock());
+            System.out.println(goblin.getName() + " → HP: " + goblin.getHp() + ", BLOCK: " + goblin.getBlock());
+
+
     }
 }
