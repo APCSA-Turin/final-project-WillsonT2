@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class CardPiles {
+    private ArrayList<Card> currentHand;
     private ArrayList<Card> drawPile;
     private ArrayList<Card> discardedPile;
     private ArrayList<Card> fullDeck;
@@ -20,14 +21,14 @@ public class CardPiles {
     }
 
     public void initalizeStartingDeck(){
-        for (int i = 0; i < fullCollection.size(); i++){
-            if (fullCollection.get(i).getCardDefinition().getTags().contains("Basic")){
-                if (fullCollection.get(i).getCardDefinition().getId().equals("strike") || fullCollection.get(i).getCardDefinition().getId().equals("defend")){
-                    fullDeck.add(fullCollection.get(i));
-                    fullDeck.add(fullCollection.get(i));
-                    fullDeck.add(fullCollection.get(i));
+        for (Card card : fullCollection) {
+            if (card.getCardDefinition().getTags().contains("basic")) {
+                if (card.getCardDefinition().getId().equals("strike") || card.getCardDefinition().getId().equals("defend")) {
+                    fullDeck.add(card);
+                    fullDeck.add(card);
+                    fullDeck.add(card);
                 }
-                fullDeck.add(fullCollection.get(i));
+                fullDeck.add(card);
             }
         }
     }
@@ -37,5 +38,7 @@ public class CardPiles {
         Collections.shuffle(drawPile);
     }
 
+    public void drawCard(){
 
+    }
 }
