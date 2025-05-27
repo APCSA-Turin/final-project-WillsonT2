@@ -29,7 +29,12 @@ public class CardLoader {
 
     }
 
+    public Map<String, Card> getLoadedCards(){
+        return loadedCards;
+    }
+
     public Card getId(String id){
         return loadedCards.get(id);
     }
+
 }

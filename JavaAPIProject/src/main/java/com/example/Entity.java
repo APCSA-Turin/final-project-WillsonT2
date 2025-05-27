@@ -74,8 +74,7 @@ public class Entity {
      * Add (or refresh) a status effect for a given number of turns.
      */
     public void addStatus(String status, int turns) {
-        statusCounters.put(status,
-                statusCounters.getOrDefault(status, 0) + turns);
+        statusCounters.put(status, statusCounters.getOrDefault(status, 0) + turns);
     }
 
     /**
