@@ -1,5 +1,6 @@
 package com.example;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -50,6 +51,8 @@ public class Card {
     public int getCost() {
         return def.getCost();
     }
+
+    public ArrayList<String> getTags() { return (ArrayList<String>) def.getTags();}
 
     /**
      * @return the current description, switching to upgraded text if applicable

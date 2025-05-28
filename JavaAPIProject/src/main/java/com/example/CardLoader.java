@@ -8,9 +8,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class CardLoader {
-    private final Map<String, Card> loadedCards = new HashMap<>();
+    private final static Map<String, Card> loadedCards = new HashMap<>();
 
-    public void loadAll() throws IOException {
+    public static void loadAll() throws IOException {
         try{
             ObjectMapper MAPPER = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES, false);
             File directory = new File("JavaAPIProject/src/main/resources/cards");
@@ -29,11 +29,9 @@ public class CardLoader {
 
     }
 
-    public Map<String, Card> getLoadedCards(){
-        return loadedCards;
-    }
+    public static HashMap<String, Card> getAllCards(){return (HashMap<String, Card>) loadedCards;}
 
-    public Card getId(String id){
+    public static Card getCard(String id){
         return loadedCards.get(id);
     }
 
