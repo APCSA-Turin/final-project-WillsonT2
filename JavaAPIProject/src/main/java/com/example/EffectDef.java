@@ -3,7 +3,7 @@ package com.example;
 public class EffectDef {
     private String conditionType;
     private int value;
-    private ConditionDef condition; // nullable for non-conditional effects
+    private ConditionDef condition;
 
 
     public EffectDef() { }

@@ -17,11 +17,6 @@ public class Card {
         this.def = def;
     }
 
-    // Only used to help access the static info in cardDef, doesn't change it
-    public CardDefinition getCardDefinition(){
-        return def;
-    }
-
     /**
      * Marks this card instance as upgraded if upgrade data is available.
      */
