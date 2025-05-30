@@ -11,12 +11,13 @@ import java.io.IOException;
  * Hello world!
  *
  */
-public class Game
+public class GameRunner
 {
 
     public static void main(String[] args) throws IOException {
         CardLoader.loadAll();
         JFrame frame = new JFrame();
+        frame.setExtendedState(JFrame.MAXIMIZED_BOTH);
         // CardLayout used to switch between different screens
         JPanel contentPane = new JPanel(new CardLayout());
 
@@ -24,9 +25,9 @@ public class Game
         menuScreen.setLayout(new BoxLayout(menuScreen, BoxLayout.Y_AXIS));
         JPanel startGameScreen = new JPanel();
         JPanel cardCollectionScreen = new JPanel();
-        JPanel cardsCollectionDisplay = new JPanel(new GridLayout(0, 5));
-        JPanel leaveCardCollection = new JPanel(new FlowLayout(FlowLayout.LEFT));
+        JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.RIGHT));
         cardCollectionScreen.setLayout(new BorderLayout());
+        JPanel cardsCollectionDisplay = new JPanel(new GridLayout(0, 5));
         cardsCollectionDisplay.add(GUIUtil.createCardDisplay(CardLoader.getCard("strike")));
         cardsCollectionDisplay.add(GUIUtil.createCardDisplay(CardLoader.getCard("defend")));
 
@@ -34,8 +35,7 @@ public class Game
         switchToGame.setAlignmentX(Component.CENTER_ALIGNMENT);
         JButton switchToCardCollection = new JButton("Cards");
         switchToCardCollection.setAlignmentX(Component.CENTER_ALIGNMENT);
-        JButton switchToMenu = new JButton("Back");
-        leaveCardCollection.add(switchToMenu);
+        JButton backToMenu = new JButton("Back");
         JButton exitGame = new JButton("Exit");
         exitGame.setAlignmentX(Component.CENTER_ALIGNMENT);
 
@@ -46,23 +46,26 @@ public class Game
 //        switchToGame.setFocusPainted(false);
 
         contentPane.add(menuScreen, "Menu");
-        contentPane.add(startGameScreen, "Back");
+        contentPane.add(startGameScreen, "StartGame");
         contentPane.add(cardCollectionScreen, "Cards");
 
         // to add custom images, use imageicon with file and pass it to a JLabel
-        ImageIcon imageIcon = new ImageIcon("src/main/resources/background.jpg");
+        ImageIcon imageIcon = new ImageIcon("JavaAPIProject/src/main/resources/dog.jpg");
+        Image scaledImage = imageIcon.getImage();
+        scaledImage.getScaledInstance(1920, 1080, Image.SCALE_SMOOTH);
+        imageIcon = new ImageIcon(scaledImage);
         JLabel background = new JLabel(imageIcon);
-        background.setVisible(true);
-        frame.add(background);
+        startGameScreen.add(background);
 
         CardLayout cardLayout = (CardLayout) contentPane.getLayout();
+
         switchToGame.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                cardLayout.show(contentPane, "Back");
+                cardLayout.show(contentPane, "StartGame");
             }
         });
-        switchToMenu.addActionListener(new ActionListener() {
+        backToMenu.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
                 cardLayout.show(contentPane, "Menu");
@@ -82,19 +85,20 @@ public class Game
         });
 
         // adding everything to their panels and frame
-        menuScreen.add(Box.createVerticalGlue());
+        menuScreen.add(Box.createVerticalGlue()); // verticalGlue creates spacing effect between buttons
         menuScreen.add(switchToGame);
         menuScreen.add(Box.createVerticalGlue());
         menuScreen.add(switchToCardCollection);
         menuScreen.add(Box.createVerticalGlue());
         menuScreen.add(exitGame);
         menuScreen.add(Box.createVerticalGlue());
-        cardCollectionScreen.add(leaveCardCollection, BorderLayout.SOUTH);
+
+        backButtonPanel.add(backToMenu);
         cardCollectionScreen.add(cardsCollectionDisplay);
+        cardCollectionScreen.add(backButtonPanel, BorderLayout.SOUTH);
         frame.add(contentPane);
 
 
-        frame.setSize(1920, 1080);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setVisible(true);
     }
