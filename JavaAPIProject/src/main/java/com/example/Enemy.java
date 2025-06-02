@@ -1,10 +1,13 @@
 package com.example;
 
-import java.util.HashMap;
+import java.awt.image.BufferedImage;
 
-public class Enemy extends Entity{
+public class Enemy {
+    private BufferedImage sprite;
+    private int health;
+    private Card move1;
+    private Card move2;
+    private Card move3;
 
-    public Enemy(String name, int hp) {
-        super(name, hp);
-    }
+    public Enemy(){}
 }
