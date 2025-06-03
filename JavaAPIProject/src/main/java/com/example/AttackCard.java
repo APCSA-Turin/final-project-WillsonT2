@@ -3,14 +3,13 @@ package com.example;
 import java.awt.image.BufferedImage;
 
 public class AttackCard extends Card {
-    public AttackCard(String name, String description, int cost, String rarity, String targets, BufferedImage image) {
+    private int damage;
+    public AttackCard(String name, String description, int cost, String rarity, String targets, int damage, BufferedImage image) {
         super(name, description, cost, rarity, targets, "attack", image);
+        this.damage = damage;
     }
 
-    public void attack(Enemy target) {
-        if (getNumTargets().equals("all")){
-
-            return;
-        }
+    public int getDamage() {
+        return damage;
     }
 }

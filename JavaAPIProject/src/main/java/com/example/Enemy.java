@@ -9,5 +9,15 @@ public class Enemy {
     private Card move2;
     private Card move3;
 
-    public Enemy(){}
+    public Enemy(int health, Card move1, Card move2, Card move3) {
+        health = health;
+    }
+
+    public int getHealth() {
+        return health;
+    }
+
+    public void takeDamage(int damage){
+        health -= damage;
+    }
 }

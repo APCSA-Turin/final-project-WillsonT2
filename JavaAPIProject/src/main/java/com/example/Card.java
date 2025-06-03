@@ -21,15 +21,7 @@ public class Card {
 //        this.image = image;
     }
 
-    public void playCard(Enemy target){
-        if (cardType.equals("attack")){
-
-        }else if (cardType.equals("skill")){
-
-        }else if (cardType.equals("power")){
-
-        }
-    }
+    public void playCard(Enemy target){}
 
     public String getName() {
         return name;
@@ -55,4 +47,8 @@ public class Card {
         return image;
     }
 
+    @Override
+    public String toString() {
+        return "Card [name=" + name + ", description=" + description + ", cost=" + cost;
+    }
 }

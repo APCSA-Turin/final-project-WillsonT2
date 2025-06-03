@@ -17,5 +17,19 @@ public class Deck {
         deck.remove(card);
     }
 
+    public Card getCard(String name) {
+        for (int i = 0; i < deck.size(); i++) {
+            if (deck.get(i).getName().equals(name)) {
+                return deck.get(i);
+            }
+        }
+        return null;
+    }
 
+    public String displayCards() {
+        for (int i = 0; i < deck.size(); i++) {
+            return deck.get(i).getName();
+        }
+        return null;
+    }
 }
