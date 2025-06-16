@@ -40,7 +40,6 @@ public class Display extends JPanel implements ActionListener {
             e.printStackTrace();
         }
 
-        // In constructor, add:
         gameHistory = new GameHistory();
         
         // Create the bottom panel with buttons
@@ -82,7 +81,7 @@ public class Display extends JPanel implements ActionListener {
     }
 
     @Override
-    protected void paintComponent(Graphics g) {
+    public void paintComponent(Graphics g) {
         super.paintComponent(g);
         
         // Draw the title
